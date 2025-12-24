@@ -1,80 +1,68 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const pages = document.querySelectorAll('.page');
+    const registrationForm = document.getElementById('registrationForm');
 
-const app = express();
+    const showPage = (id) => {
+        pages.forEach(page => page.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    };
 
-// --- Middleware ---
-app.use(cors()); 
-app.use(express.json()); 
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage(e.target.getAttribute('href').substring(1));
+        });
+    });
 
-// --- MongoDB Connection ---
-const mongoURI = process.env.MONGO_URI || "mongodb+srv://k94909517_db_user:hrujyQHLisTF7H6x@cluster0.o6sviix.mongodb.net/esportsDB?retryWrites=true&w=majority";
+    showPage('home');
 
-mongoose.connect(mongoURI)
-    .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
-
-// --- Data Schema ---
-const RegistrationSchema = new mongoose.Schema({
-    teamName: { 
-        type: String, 
-        required: true, 
-        unique: true, // Stops duplicate names
-        trim: true 
-    },
-    teamCaptain: { 
-        type: String, 
-        required: true,
-        trim: true 
-    },
-    mobileNumber: { 
-        type: String, 
-        required: true, 
-        unique: true, // Stops duplicate numbers
-        trim: true 
-    },
-    registeredAt: { 
-        type: Date, 
-        default: Date.now 
+    const homeRegisterButton = document.querySelector('#home button');
+    if (homeRegisterButton) {
+        homeRegisterButton.addEventListener('click', () => showPage('registration'));
     }
-});
 
-const Registration = mongoose.model('Registration', RegistrationSchema);
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-// --- Routes ---
+            const formData = { 
+                teamName: document.getElementById('teamName').value.trim(), 
+                teamCaptain: document.getElementById('teamCaptain').value.trim(), 
+                mobileNumber: document.getElementById('mobileNumber').value.trim() 
+            };
 
-app.get('/', (req, res) => {
-    res.send('Esports Registration Server is Running!');
-});
+            // Basic Validation
+            if (!formData.teamName || !formData.teamCaptain || !formData.mobileNumber) {
+                alert('Please fill in all fields.');
+                return;
+            }
 
-app.post('/register', async (req, res) => {
-    try {
-        const newTeam = new Registration(req.body);
-        await newTeam.save();
-        res.status(200).json({ message: "Registration successful!" });
-    } catch (error) {
-        // --- 11000: The "Duplicate Entry" Error ---
-        if (error.code === 11000) {
-            // Find which field caused the issue
-            const field = Object.keys(error.keyValue)[0];
-            const value = error.keyValue[field];
-            
-            // Turn "teamName" into "Team Name" for the user
-            const fieldDisplay = field === 'teamName' ? 'Team Name' : 'Mobile Number';
-            
-            return res.status(400).json({ 
-                error: `The ${fieldDisplay} "${value}" is already registered. Please change it.` 
+            // Send data to Render
+            fetch('https://esports-registration.onrender.com/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            })
+            .then(async (response) => {
+                // We read the JSON body even if the response is NOT 'ok'
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    // If server sends a 400 error, we 'throw' the specific error message
+                    throw new Error(data.error || 'Registration failed');
+                }
+                return data;
+            })
+            .then(data => {
+                alert(data.message); // "Registration successful!"
+                registrationForm.reset();
+                showPage('home');
+            })
+            .catch((error) => {
+                // This now catches the "The Team Name ... is already registered" message
+                alert(error.message); 
             });
-        }
-        
-        console.error("Save error:", error);
-        res.status(500).json({ error: "Server error. Please try again later." });
+        });
     }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server is live at: http://localhost:${PORT}`);
 });
