@@ -1,92 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const pages = document.querySelectorAll('.page');
-    const registrationForm = document.getElementById('registrationForm');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 
-    // Function to show a specific page
-    const showPage = (id) => {
-        pages.forEach(page => {
-            page.style.display = 'none';
-        });
-        document.getElementById(id).style.display = 'block';
-    };
+const app = express();
 
-    // Handle navigation clicks
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = e.target.getAttribute('href').substring(1);
-            showPage(targetId);
-        });
-    });
+// --- Middleware ---
+app.use(cors()); 
+app.use(express.json()); 
 
-    // Initial page load
-    showPage('home');
+// --- MongoDB Connection ---
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://k94909517_db_user:hrujyQHLisTF7H6x@cluster0.o6sviix.mongodb.net/esportsDB?retryWrites=true&w=majority";
 
-    // Handle "Register" button click on home page
-    const homeRegisterButton = document.querySelector('#home button');
-    if (homeRegisterButton) {
-        homeRegisterButton.addEventListener('click', () => {
-            showPage('registration');
-        });
+mongoose.connect(mongoURI)
+    .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
+    .catch(err => console.error("❌ MongoDB connection error:", err));
+
+// --- Data Schema ---
+const RegistrationSchema = new mongoose.Schema({
+    teamName: { 
+        type: String, 
+        required: true, 
+        unique: true, // Stops duplicate names
+        trim: true 
+    },
+    teamCaptain: { 
+        type: String, 
+        required: true,
+        trim: true 
+    },
+    mobileNumber: { 
+        type: String, 
+        required: true, 
+        unique: true, // Stops duplicate numbers
+        trim: true 
+    },
+    registeredAt: { 
+        type: Date, 
+        default: Date.now 
     }
-
-    // Handle registration form submission
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const teamName = document.getElementById('teamName').value;
-            const teamCaptain = document.getElementById('teamCaptain').value;
-            const mobileNumber = document.getElementById('mobileNumber').value;
-
-            // 1. Basic Validation
-            if (teamName.trim() === '' || teamCaptain.trim() === '' || mobileNumber.trim() === '') {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            if (!/^[0-9]{10}$/.test(mobileNumber)) {
-                alert('Please enter a valid 10-digit mobile number.');
-                return;
-            }
-
-            // 2. Prepare Data for MongoDB
-            const formData = { 
-                teamName: teamName, 
-                teamCaptain: teamCaptain, 
-                mobileNumber: mobileNumber 
-            };
-
-            // 3. Send data to your Node.js Server
-            // Make sure your server.js is running and the URL matches!
-            fetch('https://esports-registration.onrender.com/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-                alert('Registration successful! Data saved to MongoDB.');
-                
-                // Reset form and go back to home
-                registrationForm.reset();
-                showPage('home');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Server error: Could not save registration. Make sure your backend server is running.');
-            });
-        });
-    }
-
 });
 
+const Registration = mongoose.model('Registration', RegistrationSchema);
+
+// --- Routes ---
+
+app.get('/', (req, res) => {
+    res.send('Esports Registration Server is Running!');
+});
+
+app.post('/register', async (req, res) => {
+    try {
+        const newTeam = new Registration(req.body);
+        await newTeam.save();
+        res.status(200).json({ message: "Registration successful!" });
+    } catch (error) {
+        // --- 11000: The "Duplicate Entry" Error ---
+        if (error.code === 11000) {
+            // Find which field caused the issue
+            const field = Object.keys(error.keyValue)[0];
+            const value = error.keyValue[field];
+            
+            // Turn "teamName" into "Team Name" for the user
+            const fieldDisplay = field === 'teamName' ? 'Team Name' : 'Mobile Number';
+            
+            return res.status(400).json({ 
+                error: `The ${fieldDisplay} "${value}" is already registered. Please change it.` 
+            });
+        }
+        
+        console.error("Save error:", error);
+        res.status(500).json({ error: "Server error. Please try again later." });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Server is live at: http://localhost:${PORT}`);
+});
