@@ -1,82 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esports Tournament Registration</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="FFLOGO.png" alt="Free Fire Logo">
-        </div>
-        <h1>Esports Tournament Registration</h1>
-    </header>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a0a; /* Very dark background */
+    color: #e0e0e0; /* Light grey text */
+}
 
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Tournament</a></li>
-            <li><a href="#rules">Rules</a></li>
-            <li><a href="#registration">Register Now</a></li>
-        </ul>
-    </nav>
+header {
+    background-color: #1a1a1a; /* Dark header */
+    color: #00bfff; /* Deep Sky Blue text */
+    padding: 1em 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    <main>
-        <section id="home" class="page">
-            <h2>Welcome to the Esports Tournament!</h2>
-            <p>Get ready for an epic battle in Free Fire. Register your team now!</p>
-            <button onclick="location.href='#registration'">Register</button>
-        </section>
+.logo-container {
+    margin-right: 20px;
+}
 
-        <section id="about" class="page" style="display:none;">
-            <h2>About the Tournament</h2>
-            <p>This tournament brings together the best Free Fire players to compete for glory and exciting prizes. Form your squad, strategize, and conquer the battlefield!</p>
-            <h3>Prizes:</h3>
-            <ul>
-                <li>1st Place: Cash Prize + In-game items</li>
-                <li>2nd Place: In-game items + Vouchers</li>
-                <li>3rd Place: In-game items</li>
-            </ul>
-        </section>
+.logo-container img {
+    height: 50px; /* Adjust as needed */
+}
 
-        <section id="rules" class="page" style="display:none;">
-            <h2>Tournament Rules</h2>
-            <ul>
-                <li>Each team must consist of 4 players.</li>
-                <li>All players must be 16 years or older.</li>
-                <li>No emulators allowed.</li>
-                <li>Fair play is strictly enforced.</li>
-                <li>Further detailed rules will be provided upon registration confirmation.</li>
-            </ul>
-        </section>
+nav {
+    background-color: #333; /* Medium dark navigation */
+    color: #ffcc00; /* Yellow text */
+    padding: 0.5em 0;
+    text-align: center;
+}
 
-        <section id="registration" class="page" style="display:none;">
-            <h2>Team Registration</h2>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="teamName">Team Name:</label>
-                    <input type="text" id="teamName" name="teamName" required>
-                </div>
-                <div class="form-group">
-                    <label for="teamCaptain">Team Captain:</label>
-                    <input type="text" id="teamCaptain" name="teamCaptain" required>
-                </div>
-                <div class="form-group">
-                    <label for="mobileNumber">Mobile Number:</label>
-                    <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" required>
-                    <small>Format: 1234567890</small>
-                </div>
-                <button type="submit">Submit Registration</button>
-            </form>
-        </section>
-    </main>
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
 
-    <footer>
-        <p>&copy; 2025 Esports Tournament. All rights reserved.</p>
-    </footer>
+nav ul li {
+    margin: 0 15px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+nav ul li a {
+    color: #ffcc00; /* Yellow links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #00bfff; /* Deep Sky Blue on hover */
+}
+
+nav ul li a:hover {
+    color: #00bfff; /* Deep Sky Blue on hover */
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #1a1a1a; /* Dark main content background */
+    border: 2px solid #00bfff; /* Blue border */
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); /* Blueish shadow */
+}
+
+.page {
+    margin-bottom: 20px;
+}
+
+.page h2 {
+    color: #ffcc00; /* Yellow headings */
+    text-shadow: 1px 1px 2px #00bfff; /* Blue shadow for headings */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #00bfff; /* Blue border */
+    border-radius: 4px;
+    background-color: #2a2a2a; /* Darker input background */
+    color: #e0e0e0; /* Light input text */
+}
+
+button[type="submit"] {
+    background-color: #00bfff; /* Deep Sky Blue button */
+    color: #fff; /* White text on button */
+    border: 2px solid #ffcc00; /* Yellow border for button */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffcc00; /* Yellow on hover */
+    color: #000; /* Black text on yellow hover */
+    border: 2px solid #00bfff; /* Blue border on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #1a1a1a; /* Dark footer */
+    color: #00bfff; /* Deep Sky Blue text */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
