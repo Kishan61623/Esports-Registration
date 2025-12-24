@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 3. Send data to your Node.js Server
             // Make sure your server.js is running and the URL matches!
-            fetch('https://esports-registration.onrender.com/', {
+            fetch('https://esports-registration.onrender.com/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,3 +89,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
