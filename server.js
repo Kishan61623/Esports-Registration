@@ -11,7 +11,7 @@ app.use(express.json()); // Allows the server to understand the data sent from y
 
 // --- MongoDB Connection ---
 // In production (Render), we use process.env.MONGO_URI for security
-const mongoURI = process.env.MONGO_URI || "mongodb+srv://k94909517_db_user:zPOu6VrKK1tNOgtw@cluster0.o6sviix.mongodb.net/?appName=cluster0";
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://k94909517_db_user:hrujyQHLisTF7H6x@cluster0.o6sviix.mongodb.net/?appName=cluster0";
 
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
@@ -52,4 +52,5 @@ app.post('/register', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 Server is live at: http://localhost:${PORT}`);
+
 });
