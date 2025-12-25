@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         pages.forEach(page => {
             page.style.display = 'none';
         });
-        document.getElementById(id).style.display = 'block';
+        const targetPage = document.getElementById(id);
+        if (targetPage) targetPage.style.display = 'block';
     };
 
     // Handle navigation clicks
@@ -20,10 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle "Tournament Info" navigation click
-
-    // Initial page load is handled by CSS.
-    // showPage('tournament-info'); // Removed to prevent flicker and rely on CSS
+    // Initial page load logic
+    showPage('home');
 
     // Handle "Register" button click on home page
     const homeRegisterButton = document.querySelector('#home button');
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // 3. Send data to your Node.js Server
-            // Make sure your server.js is running and the URL matches!
             fetch('https://esports-registration.onrender.com/register', {
                 method: 'POST',
                 headers: {
@@ -69,15 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(formData),
             })
-            .then(response => {
+            .then(async response => {
+                // Read the JSON data even if the status is not 200
+                const data = await response.json();
+
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    // Throw the specific error message from the backend
+                    throw new Error(data.error || 'Registration failed');
                 }
-                return response.json();
+                return data;
             })
             .then(data => {
                 console.log('Success:', data);
-                alert('Registration successful! Data saved to MongoDB.');
+                alert(data.message || 'Registration successful!');
                 
                 // Reset form and go back to home
                 registrationForm.reset();
@@ -85,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('Server error: Could not save registration. Make sure your backend server is running.');
+                // Displays the specific reason for failure (e.g., duplicate team name)
+                alert(error.message);
             });
         });
     }
 });
-
