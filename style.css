@@ -68,6 +68,12 @@ main {
 
 .page {
     margin-bottom: 20px;
+    display: none; /* Hide all pages by default */
+}
+
+/* Show the initial page */
+#tournament-info {
+    display: block;
 }
 
 .image-container {
