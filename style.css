@@ -1,3 +1,4 @@
+/* --- Global Styles --- */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,31 +7,39 @@ body {
     color: #e0e0e0; /* Light grey text */
 }
 
+/* --- Header Section (Logo beside Title) --- */
 header {
     background-color: #1a1a1a; /* Dark header */
     color: #00bfff; /* Deep Sky Blue text */
     padding: 1em 0;
-    text-align: center;
-    /* This makes the logo and text sit beside each other */
+    
+    /* Flexbox magic to force side-by-side layout */
     display: flex;
-    align-items: center; /* Vertically centers them */
-    justify-content: center; /* Centers the whole group */
+    flex-direction: row;
+    align-items: center; /* Vertically centers logo and text */
+    justify-content: center; /* Centers the whole group horizontally */
 }
 
 .logo-container {
-    margin-right: 20px; /* Space between logo and text */
+    margin-right: 15px; /* Space between logo and text */
+    display: flex;
+    align-items: center;
 }
 
 .logo-container img {
-    height: 50px; /* Reduced size to be small beside text */
+    height: 35px; /* Small size as requested */
+    width: auto;
+    display: block;
 }
 
 h1 {
-    font-size: 24px; /* Balanced size for the title */
+    font-size: 24px; /* Balanced size to sit beside small logo */
     margin: 0;
     color: #00bfff;
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
 }
 
+/* --- Navigation --- */
 nav {
     background-color: #333; /* Medium dark navigation */
     color: #ffcc00; /* Yellow text */
@@ -60,6 +69,7 @@ nav ul li a:hover {
     color: #00bfff; /* Deep Sky Blue on hover */
 }
 
+/* --- Main Content --- */
 main {
     padding: 20px;
     max-width: 800px;
@@ -75,9 +85,10 @@ main {
 }
 
 #tournament-info {
-    display: block;
+    display: block; /* Show home page by default */
 }
 
+/* --- Home Page Images & Descriptions --- */
 .image-container {
     text-align: center;
     margin-bottom: 20px;
@@ -94,18 +105,19 @@ main {
     font-size: 1.1em;
     line-height: 1.6;
     text-align: center;
-    color: #e0e0e0; /* Light grey text */
+    color: #e0e0e0;
     padding: 10px;
-    background-color: #2a2a2a; /* Darker background for description */
+    background-color: #2a2a2a;
     border-radius: 5px;
-    border: 1px solid #00bfff; /* Blue border for description */
+    border: 1px solid #00bfff;
 }
 
 .page h2 {
     color: #ffcc00; /* Yellow headings */
-    text-shadow: 1px 1px 2px #00bfff; /* Blue shadow for headings */
+    text-shadow: 1px 1px 2px #00bfff;
 }
 
+/* --- Form Styles --- */
 .form-group {
     margin-bottom: 15px;
 }
@@ -121,29 +133,31 @@ main {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    border: 1px solid #00bfff; /* Blue border */
+    border: 1px solid #00bfff;
     border-radius: 4px;
-    background-color: #2a2a2a; /* Darker input background */
-    color: #e0e0e0; /* Light input text */
+    background-color: #2a2a2a;
+    color: #e0e0e0;
 }
 
+/* --- Buttons --- */
 button[type="submit"], #home-btn {
     background-color: #00bfff; /* Deep Sky Blue button */
-    color: #fff; /* White text on button */
-    border: 2px solid #ffcc00; /* Yellow border for button */
+    color: #fff;
+    border: 2px solid #ffcc00; /* Yellow border */
     padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 button[type="submit"]:hover, #home-btn:hover {
-    background-color: #ffcc00; /* Yellow on hover */
-    color: #000; /* Black text on yellow hover */
-    border: 2px solid #00bfff; /* Blue border on hover */
+    background-color: #ffcc00;
+    color: #000;
+    border: 2px solid #00bfff;
 }
 
-/* Discord Specific Styling */
+/* --- Discord Success Section --- */
 .discord-box {
     background-color: #2a2a2a;
     border: 2px dashed #ffcc00;
@@ -154,20 +168,25 @@ button[type="submit"]:hover, #home-btn:hover {
 
 .discord-button {
     display: inline-block;
-    background-color: #5865F2;
+    background-color: #5865F2; /* Official Discord Blue */
     color: white !important;
     padding: 15px 25px;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     font-size: 1.2em;
+    transition: transform 0.2s;
 }
 
+.discord-button:hover {
+    transform: scale(1.05);
+}
+
+/* --- Footer --- */
 footer {
     text-align: center;
     padding: 1em 0;
-    background-color: #1a1a1a; /* Dark footer */
-    color: #00bfff; /* Deep Sky Blue text */
+    background-color: #1a1a1a;
+    color: #00bfff;
     width: 100%;
 }
-
