@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle "Tournament Info" navigation click
 
-    // Initial page load
-    showPage('tournament-info');
+    // Initial page load is handled by CSS.
+    // showPage('tournament-info'); // Removed to prevent flicker and rely on CSS
 
     // Handle "Register" button click on home page
     const homeRegisterButton = document.querySelector('#home button');
