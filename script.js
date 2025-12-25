@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial page load logic
-    showPage('home');
+    showPage('tournament-info'); // Changed to match the actual ID of the home section
 
     // Handle "Register" button click on home page
     const homeRegisterButton = document.querySelector('#home button');
