@@ -2,31 +2,39 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0a0a0a;
-    color: #e0e0e0;
+    background-color: #0a0a0a; /* Very dark background */
+    color: #e0e0e0; /* Light grey text */
 }
 
 header {
-    background-color: #1a1a1a;
-    color: #00bfff;
+    background-color: #1a1a1a; /* Dark header */
+    color: #00bfff; /* Deep Sky Blue text */
     padding: 1em 0;
     text-align: center;
+    /* This makes the logo and text sit beside each other */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Vertically centers them */
+    justify-content: center; /* Centers the whole group */
 }
 
 .logo-container {
-    margin-right: 20px;
+    margin-right: 15px; /* Space between logo and text */
 }
 
 .logo-container img {
-    height: 50px;
+    height: 35px; /* Reduced size to be small beside text */
+    width: auto;
+}
+
+h1 {
+    font-size: 24px; /* Balanced size for the title */
+    margin: 0;
+    color: #00bfff;
 }
 
 nav {
-    background-color: #333;
-    color: #ffcc00;
+    background-color: #333; /* Medium dark navigation */
+    color: #ffcc00; /* Yellow text */
     padding: 0.5em 0;
     text-align: center;
 }
@@ -44,27 +52,27 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ffcc00;
+    color: #ffcc00; /* Yellow links */
     text-decoration: none;
     font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #00bfff;
+    color: #00bfff; /* Deep Sky Blue on hover */
 }
 
 main {
     padding: 20px;
     max-width: 800px;
     margin: 20px auto;
-    background-color: #1a1a1a;
-    border: 2px solid #00bfff;
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+    background-color: #1a1a1a; /* Dark main content background */
+    border: 2px solid #00bfff; /* Blue border */
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); /* Blueish shadow */
 }
 
 .page {
     margin-bottom: 20px;
-    display: none;
+    display: none; /* Hide all pages by default */
 }
 
 #tournament-info {
@@ -79,24 +87,24 @@ main {
 .image-container img {
     max-width: 100%;
     height: auto;
-    border: 2px solid #ffcc00;
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+    border: 2px solid #ffcc00; /* Yellow border for image */
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Blueish shadow for image */
 }
 
 .tournament-description {
     font-size: 1.1em;
     line-height: 1.6;
     text-align: center;
-    color: #e0e0e0;
+    color: #e0e0e0; /* Light grey text */
     padding: 10px;
-    background-color: #2a2a2a;
+    background-color: #2a2a2a; /* Darker background for description */
     border-radius: 5px;
-    border: 1px solid #00bfff;
+    border: 1px solid #00bfff; /* Blue border for description */
 }
 
 .page h2 {
-    color: #ffcc00;
-    text-shadow: 1px 1px 2px #00bfff;
+    color: #ffcc00; /* Yellow headings */
+    text-shadow: 1px 1px 2px #00bfff; /* Blue shadow for headings */
 }
 
 .form-group {
@@ -114,16 +122,16 @@ main {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    border: 1px solid #00bfff;
+    border: 1px solid #00bfff; /* Blue border */
     border-radius: 4px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
+    background-color: #2a2a2a; /* Darker input background */
+    color: #e0e0e0; /* Light input text */
 }
 
 button[type="submit"], #home-btn {
-    background-color: #00bfff;
-    color: #fff;
-    border: 2px solid #ffcc00;
+    background-color: #00bfff; /* Deep Sky Blue button */
+    color: #fff; /* White text on button */
+    border: 2px solid #ffcc00; /* Yellow border for button */
     padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
@@ -131,9 +139,9 @@ button[type="submit"], #home-btn {
 }
 
 button[type="submit"]:hover, #home-btn:hover {
-    background-color: #ffcc00;
-    color: #000;
-    border: 2px solid #00bfff;
+    background-color: #ffcc00; /* Yellow on hover */
+    color: #000; /* Black text on yellow hover */
+    border: 2px solid #00bfff; /* Blue border on hover */
 }
 
 /* Discord Specific Styling */
@@ -159,7 +167,7 @@ button[type="submit"]:hover, #home-btn:hover {
 footer {
     text-align: center;
     padding: 1em 0;
-    background-color: #1a1a1a;
-    color: #00bfff;
+    background-color: #1a1a1a; /* Dark footer */
+    color: #00bfff; /* Deep Sky Blue text */
     width: 100%;
 }
