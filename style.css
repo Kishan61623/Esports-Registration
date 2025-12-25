@@ -8,31 +8,27 @@ body {
 
 header {
     background-color: #1a1a1a;
+    color: #00bfff;
     padding: 1em 0;
-    border-bottom: 2px solid #00bfff;
-}
-
-/* Flexbox for Logo beside Title */
-.logo-title-container {
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 }
 
-.header-logo {
+.logo-container {
+    margin-right: 20px;
+}
+
+.logo-container img {
     height: 50px;
-}
-
-h1 {
-    margin: 0;
-    color: #ffcc00;
-    text-shadow: 1px 1px 2px #00bfff;
 }
 
 nav {
     background-color: #333;
+    color: #ffcc00;
     padding: 0.5em 0;
+    text-align: center;
 }
 
 nav ul {
@@ -43,12 +39,18 @@ nav ul {
     justify-content: center;
 }
 
-nav ul li { margin: 0 15px; }
+nav ul li {
+    margin: 0 15px;
+}
 
 nav ul li a {
     color: #ffcc00;
     text-decoration: none;
     font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #00bfff;
 }
 
 main {
@@ -60,9 +62,81 @@ main {
     box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
 }
 
-.page { display: none; }
+.page {
+    margin-bottom: 20px;
+    display: none;
+}
 
-/* Discord Box and Button Styling */
+#tournament-info {
+    display: block;
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ffcc00;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+.tournament-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    color: #e0e0e0;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    border: 1px solid #00bfff;
+}
+
+.page h2 {
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px #00bfff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #00bfff;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+button[type="submit"], #home-btn {
+    background-color: #00bfff;
+    color: #fff;
+    border: 2px solid #ffcc00;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover, #home-btn:hover {
+    background-color: #ffcc00;
+    color: #000;
+    border: 2px solid #00bfff;
+}
+
+/* Discord Specific Styling */
 .discord-box {
     background-color: #2a2a2a;
     border: 2px dashed #ffcc00;
@@ -74,26 +148,18 @@ main {
 .discord-button {
     display: inline-block;
     background-color: #5865F2;
-    color: #fff !important;
+    color: white !important;
     padding: 15px 25px;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+    font-size: 1.2em;
 }
 
-.discord-button:hover { transform: scale(1.05); }
-
-.image-container img {
-    max-width: 100%;
-    border: 2px solid #ffcc00;
-}
-
-.form-group input {
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #1a1a1a;
+    color: #00bfff;
     width: 100%;
-    padding: 8px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border: 1px solid #00bfff;
 }
-
-footer { text-align: center; padding: 1em 0; color: #00bfff; }
