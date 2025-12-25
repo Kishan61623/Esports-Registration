@@ -18,12 +18,11 @@ header {
 }
 
 .logo-container {
-    margin-right: 15px; /* Space between logo and text */
+    margin-right: 20px; /* Space between logo and text */
 }
 
 .logo-container img {
-    height: 35px; /* Reduced size to be small beside text */
-    width: auto;
+    height: 50px; /* Reduced size to be small beside text */
 }
 
 h1 {
@@ -171,3 +170,4 @@ footer {
     color: #00bfff; /* Deep Sky Blue text */
     width: 100%;
 }
+
