@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="FFLOGO.png" alt="Free Fire Logo">
+        <div class="logo-title-container">
+            <img src="FFLOGO.png" alt="Free Fire Logo" class="header-logo">
+            <h1>Esports Tournament Registration</h1>
         </div>
-        <h1>Esports Tournament Registration</h1>
     </header>
 
     <nav>
@@ -25,7 +25,7 @@
     </nav>
 
     <main>
-        <section id="tournament-info" class="page" >
+        <section id="tournament-info" class="page">
             <div class="image-container">
                 <img src="Thumbnail.png" alt="Tournament Image">
             </div>
@@ -34,7 +34,7 @@
             <p>Get ready for an epic battle in Free Fire. Register your team now!</p>
         </section>
 
-        <section id="about" class="page" style="display:none;">
+        <section id="about" class="page">
             <h2>About the Tournament</h2>
             <p>This tournament brings together the best Free Fire players to compete for glory and exciting prizes. Form your squad, strategize, and conquer the battlefield!</p>
             <h3>Prizes:</h3>
@@ -45,7 +45,7 @@
             </ul>
         </section>
 
-        <section id="rules" class="page" style="display:none;">
+        <section id="rules" class="page">
             <h2>Tournament Rules</h2>
             <ul>
                 <li>This Tournament is a Paid Tournament.</li>
@@ -53,11 +53,10 @@
                 <li>All players must be 16 years or older.</li>
                 <li>No emulators allowed.</li>
                 <li>Fair play is strictly enforced.</li>
-                <li>Further detailed rules will be provided upon registration confirmation.</li>
             </ul>
         </section>
 
-        <section id="registration" class="page" style="display:none;">
+        <section id="registration" class="page">
             <h2>Team Registration</h2>
             <form id="registrationForm">
                 <div class="form-group">
@@ -76,6 +75,16 @@
                 <button type="submit">Submit Registration</button>
             </form>
         </section>
+
+        <section id="success-page" class="page" style="text-align: center;">
+            <h2>✅ Registration Successful!</h2>
+            <div class="discord-box">
+                <h3>Final Step: Join Our Discord</h3>
+                <p>You must join our Discord server to receive the room ID and password.</p>
+                <a href="https://discord.gg/YOUR_INVITE_LINK" target="_blank" class="discord-button">Join Discord Server</a>
+            </div>
+            <button onclick="window.location.reload()" class="back-btn">Back to Home</button>
+        </section>
     </main>
 
     <footer>
@@ -85,7 +94,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
