@@ -1,192 +1,44 @@
-/* --- Global Styles --- */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0a0a0a; /* Very dark background */
-    color: #e0e0e0; /* Light grey text */
-}
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #0a0a0a; color: #e0e0e0; }
 
-/* --- Header Section (Logo beside Title) --- */
 header {
-    background-color: #1a1a1a; /* Dark header */
-    color: #00bfff; /* Deep Sky Blue text */
+    background-color: #1a1a1a;
     padding: 1em 0;
-    
-    /* Flexbox magic to force side-by-side layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Vertically centers logo and text */
-    justify-content: center; /* Centers the whole group horizontally */
-}
-
-.logo-container {
-    margin-right: 15px; /* Space between logo and text */
-    display: flex;
+    display: flex; /* Logo beside text */
     align-items: center;
-}
-
-.logo-container img {
-    height: 35px; /* Small size as requested */
-    width: auto;
-    display: block;
-}
-
-h1 {
-    font-size: 24px; /* Balanced size to sit beside small logo */
-    margin: 0;
-    color: #00bfff;
-    white-space: nowrap; /* Prevents text from wrapping to a new line */
-}
-
-/* --- Navigation --- */
-nav {
-    background-color: #333; /* Medium dark navigation */
-    color: #ffcc00; /* Yellow text */
-    padding: 0.5em 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
     justify-content: center;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
+.logo-container { margin-right: 15px; }
+.logo-container img { height: 35px; width: auto; }
+h1 { font-size: 24px; margin: 0; color: #00bfff; }
 
-nav ul li a {
-    color: #ffcc00; /* Yellow links */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: #00bfff; /* Deep Sky Blue on hover */
-}
-
-/* --- Main Content --- */
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #1a1a1a; /* Dark main content background */
-    border: 2px solid #00bfff; /* Blue border */
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); /* Blueish shadow */
-}
-
-.page {
-    margin-bottom: 20px;
-    display: none; /* Hide all pages by default */
-}
-
-#tournament-info {
-    display: block; /* Show home page by default */
-}
-
-/* --- Home Page Images & Descriptions --- */
-.image-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #ffcc00; /* Yellow border for image */
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Blueish shadow for image */
-}
-
-.tournament-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    text-align: center;
-    color: #e0e0e0;
-    padding: 10px;
-    background-color: #2a2a2a;
-    border-radius: 5px;
-    border: 1px solid #00bfff;
-}
-
-.page h2 {
-    color: #ffcc00; /* Yellow headings */
-    text-shadow: 1px 1px 2px #00bfff;
-}
-
-/* --- Form Styles --- */
-.form-group {
+/* Inline Notification Styles */
+#statusMessage {
     margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="tel"] {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #00bfff;
-    border-radius: 4px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-}
-
-/* --- Buttons --- */
-button[type="submit"], #home-btn {
-    background-color: #00bfff; /* Deep Sky Blue button */
-    color: #fff;
-    border: 2px solid #ffcc00; /* Yellow border */
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-button[type="submit"]:hover, #home-btn:hover {
-    background-color: #ffcc00;
-    color: #000;
-    border: 2px solid #00bfff;
-}
-
-/* --- Discord Success Section --- */
-.discord-box {
-    background-color: #2a2a2a;
-    border: 2px dashed #ffcc00;
-    padding: 30px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-
-.discord-button {
-    display: inline-block;
-    background-color: #5865F2; /* Official Discord Blue */
-    color: white !important;
-    padding: 15px 25px;
-    text-decoration: none;
-    font-weight: bold;
+    padding: 10px;
     border-radius: 5px;
-    font-size: 1.2em;
-    transition: transform 0.2s;
-}
-
-.discord-button:hover {
-    transform: scale(1.05);
-}
-
-/* --- Footer --- */
-footer {
     text-align: center;
-    padding: 1em 0;
-    background-color: #1a1a1a;
-    color: #00bfff;
-    width: 100%;
+    font-weight: bold;
+    display: none; /* Hidden by default */
 }
+.status-success { background-color: #004d00; color: #00ff00; border: 1px solid #00ff00; display: block !important; }
+.status-error { background-color: #4d0000; color: #ff3333; border: 1px solid #ff3333; display: block !important; }
+
+nav { background-color: #333; padding: 0.5em 0; text-align: center; }
+nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
+nav ul li { margin: 0 15px; }
+nav ul li a { color: #ffcc00; text-decoration: none; font-weight: bold; }
+
+main { padding: 20px; max-width: 800px; margin: 20px auto; background-color: #1a1a1a; border: 2px solid #00bfff; box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
+.page { margin-bottom: 20px; display: none; }
+#tournament-info { display: block; }
+
+.discord-box { background-color: #2a2a2a; border: 2px dashed #ffcc00; padding: 30px; margin: 20px 0; border-radius: 10px; }
+.discord-button { display: inline-block; background-color: #5865F2; color: white !important; padding: 15px 25px; border-radius: 5px; text-decoration: none; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group input { width: 100%; padding: 8px; box-sizing: border-box; background-color: #2a2a2a; color: white; border: 1px solid #00bfff; }
+
+button { background-color: #00bfff; color: white; border: 2px solid #ffcc00; padding: 10px 15px; cursor: pointer; }
+footer { text-align: center; padding: 1em 0; color: #00bfff; }
