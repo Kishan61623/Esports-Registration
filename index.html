@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +10,9 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="FFLOGO.png" alt="Free Fire Logo">
+        <div class="logo-title-container">
+            <h1>Esports Tournament Registration</h1>
         </div>
-        <h1>Esports Tournament Registration</h1>
     </header>
 
     <nav>
@@ -29,20 +29,28 @@
             <div class="image-container">
                 <img src="Thumbnail.png" alt="Tournament Image">
             </div>
-            <p class="tournament-description">Join the ultimate Free Fire tournament! Compete against top players, showcase your skills, and win amazing prizes.</p>
+            <p class="tournament-description">Join the ultimate Free Fire tournament! Compete against top players, showcase your skills, and win amazing prizes. This is your chance to become a legend!</p>
             <h2>Welcome!</h2>
-            <p>Get ready for an epic battle. Register your team now!</p>
+            <p>Get ready for an epic battle in Free Fire. Register your team now!</p>
         </section>
 
         <section id="about" class="page">
             <h2>About the Tournament</h2>
-            <p>This tournament brings together the best Free Fire players to compete for glory.</p>
+            <p>This tournament brings together the best Free Fire players to compete for glory and exciting prizes. Form your squad, strategize, and conquer the battlefield!</p>
+            <h3>Prizes:</h3>
+            <ul>
+                <li>1st Place: Cash Prize</li>
+                <li>2nd Place: Cash Prize</li>
+                <li>3rd Place: Cash Prize</li>
+            </ul>
         </section>
 
         <section id="rules" class="page">
             <h2>Tournament Rules</h2>
             <ul>
                 <li>This Tournament is a Paid Tournament.</li>
+                <li>Each team must consist of 4 players.</li>
+                <li>All players must be 16 years or older.</li>
                 <li>No emulators allowed.</li>
                 <li>Fair play is strictly enforced.</li>
             </ul>
@@ -50,23 +58,23 @@
 
         <section id="registration" class="page">
             <h2>Team Registration</h2>
-            
-            <div id="statusMessage"></div>
-
             <form id="registrationForm">
                 <div class="form-group">
                     <label for="teamName">Team Name:</label>
                     <input type="text" id="teamName" name="teamName" required>
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="teamCaptain">Team Captain:</label>
                     <input type="text" id="teamCaptain" name="teamCaptain" required>
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="mobileNumber">Mobile Number:</label>
                     <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" required>
                     <small>Format: 1234567890</small>
                 </div>
+                <br>
                 <button type="submit">Submit Registration</button>
             </form>
         </section>
@@ -75,10 +83,10 @@
             <h2>✅ Registration Successful!</h2>
             <div class="discord-box">
                 <h3>Final Step: Join Our Discord</h3>
-                <p>Join to receive the room ID and password.</p>
+                <p>You must join our Discord server to receive the room ID and password.</p>
                 <a href="https://discord.gg/9Wzn5vjJDZ" target="_blank" class="discord-button">Join Discord Server</a>
             </div>
-            <button onclick="window.location.reload()" id="home-btn">Back to Home</button>
+            <button onclick="window.location.reload()" class="back-btn">Back to Home</button>
         </section>
     </main>
 
@@ -89,3 +97,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
