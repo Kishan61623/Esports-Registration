@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const pages = document.querySelectorAll('.page');
     const registrationForm = document.getElementById('registrationForm');
     const statusMsg = document.getElementById('statusMessage');
+    const mongoose = require('mongoose');
+    
+    require('dotenv').config();
+
+// The URI is usually stored in process.env.MONGO_URI for security
+const mongoURI = process.env.mongodb+srv://kk4538_db_user:AXU6azrmQBIZsfb1@esports.jadn4w5.mongodb.net/?appName=Esports;
+
+mongoose.connect(mongoURI)
+    .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
+    .catch(err => console.error("❌ MongoDB connection error:", err));
 
     const showPage = (id) => {
         pages.forEach(page => page.style.display = 'none');
@@ -60,3 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
