@@ -12,7 +12,7 @@ app.use(express.json());
 
 // --- MongoDB Connection ---
 // Explicitly adding 'esportsDB' to the URI helps ensure data goes to the right collection
-const mongoURI = process.env.MONGO_URI || "mongodb+srv://k94909517_db_user:hrujyQHLisTF7H6x@cluster0.o6sviix.mongodb.net/esportsDB?retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://kk4538_db_user:AXU6azrmQBIZsfb1@esports.jadn4w5.mongodb.net/?appName=Esports";
 
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
@@ -81,4 +81,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 Server is live at: http://localhost:${PORT}`);
 });
+
 
