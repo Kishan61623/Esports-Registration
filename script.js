@@ -2,17 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav ul li a');
     const pages = document.querySelectorAll('.page');
     const registrationForm = document.getElementById('registrationForm');
-    const statusMsg = document.getElementById('statusMessage');
-    const mongoose = require('mongoose');
-    
-    require('dotenv').config();
-
-// The URI is usually stored in process.env.MONGO_URI for security
-const mongoURI = process.env.mongodb+srv://kk4538_db_user:AXU6azrmQBIZsfb1@esports.jadn4w5.mongodb.net/?appName=Esports;
-
-mongoose.connect(mongoURI)
-    .then(() => console.log("✅ Successfully connected to MongoDB Atlas"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
 
     const showPage = (id) => {
         pages.forEach(page => page.style.display = 'none');
@@ -28,16 +17,23 @@ mongoose.connect(mongoURI)
         });
     });
 
+    // Default Page Load
+    showPage('tournament-info');
+
     if (registrationForm) {
         registrationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            statusMsg.style.display = 'none'; // Clear old messages
 
             const formData = {
                 teamName: document.getElementById('teamName').value.trim(),
                 teamCaptain: document.getElementById('teamCaptain').value.trim(),
                 mobileNumber: document.getElementById('mobileNumber').value.trim()
             };
+
+            if (!/^[0-9]{10}$/.test(formData.mobileNumber)) {
+                alert('Please enter a valid 10-digit mobile number.');
+                return;
+            }
 
             try {
                 const response = await fetch('https://esports-registration.onrender.com/register', {
@@ -52,22 +48,13 @@ mongoose.connect(mongoURI)
                     throw new Error(data.error || 'Registration failed');
                 }
 
-                // Show Success in HTML
-                statusMsg.textContent = "✅ Database Saved Successfully!";
-                statusMsg.className = "status-success";
-
-                setTimeout(() => {
-                    registrationForm.reset();
-                    statusMsg.style.display = 'none';
-                    showPage('success-page');
-                }, 2000);
+                // Show the Discord join page on success
+                registrationForm.reset();
+                showPage('success-page');
 
             } catch (error) {
-                // Show Error in HTML
-                statusMsg.textContent = "❌ " + error.message;
-                statusMsg.className = "status-error";
+                alert(error.message);
             }
         });
     }
 });
-
