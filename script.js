@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav ul li a');
     const pages = document.querySelectorAll('.page');
     const registrationForm = document.getElementById('registrationForm');
+    const statusMsg = document.getElementById('statusMessage');
 
     const showPage = (id) => {
         pages.forEach(page => page.style.display = 'none');
@@ -17,23 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Default Page Load
-    showPage('tournament-info');
-
     if (registrationForm) {
         registrationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            statusMsg.style.display = 'none'; // Clear old messages
 
             const formData = {
                 teamName: document.getElementById('teamName').value.trim(),
                 teamCaptain: document.getElementById('teamCaptain').value.trim(),
                 mobileNumber: document.getElementById('mobileNumber').value.trim()
             };
-
-            if (!/^[0-9]{10}$/.test(formData.mobileNumber)) {
-                alert('Please enter a valid 10-digit mobile number.');
-                return;
-            }
 
             try {
                 const response = await fetch('https://esports-registration.onrender.com/register', {
@@ -48,12 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(data.error || 'Registration failed');
                 }
 
-                // Show the Discord join page on success
-                registrationForm.reset();
-                showPage('success-page');
+                // Show Success in HTML
+                statusMsg.textContent = "✅ Database Saved Successfully!";
+                statusMsg.className = "status-success";
+
+                setTimeout(() => {
+                    registrationForm.reset();
+                    statusMsg.style.display = 'none';
+                    showPage('success-page');
+                }, 2000);
 
             } catch (error) {
-                alert(error.message);
+                // Show Error in HTML
+                statusMsg.textContent = "❌ " + error.message;
+                statusMsg.className = "status-error";
             }
         });
     }
