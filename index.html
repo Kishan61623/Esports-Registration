@@ -1,101 +1,408 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esports Tournament Registration</title>
-    <link rel="shortcut icon" href="1favicon.ico" type="image/x-icon">
+    <title>Free Fire Esports Tournament 2026 | Register Now</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Join the ultimate Free Fire tournament 2026. Compete against top players, win cash prizes. Register your team now!">
+    <meta name="keywords" content="Free Fire, esports, tournament, gaming, competition, prizes">
+    <meta name="author" content="Esports Tournament">
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Free Fire Esports Tournament 2026">
+    <meta property="og:description" content="Join the ultimate Free Fire tournament and win amazing prizes!">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Fire Esports Tournament 2026">
+    <meta name="twitter:description" content="Register now for the ultimate Free Fire tournament!">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo-title-container">
-            <h1>Esports Tournament Registration</h1>
+<!-- Animated Background Particles -->
+<div id="particles-js"></div>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Loading Tournament...</p>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-content">
+        <div class="logo-container">
+            <i class="fas fa-gamepad logo-icon"></i>
+            <h1>FREE FIRE <span class="highlight">TOURNAMENT</span></h1>
         </div>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#tournament-info">Home</a></li>
-            <li><a href="#about">About Tournament</a></li>
-            <li><a href="#rules">Rules</a></li>
-            <li><a href="#registration">Register Now</a></li>
-        </ul>
-    </nav>
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <main>
-        <section id="tournament-info" class="page">
-            <div class="image-container">
-                <img src="Thumbnail.png" alt="Tournament Image">
+        <!-- Tournament Countdown -->
+        <div class="countdown-header">
+            <i class="fas fa-clock"></i>
+            <span id="countdown-timer">Loading...</span>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav id="main-nav">
+    <ul>
+        <li><a href="#tournament-info" data-page="tournament-info"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#rules" data-page="rules"><i class="fas fa-book"></i> Rules</a></li>
+        <li><a href="#register" data-page="register"><i class="fas fa-user-plus"></i> Register</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content Container -->
+<main>
+    <!-- HOME PAGE -->
+    <section id="tournament-info" class="page active" data-aos="fade-up">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title">JOIN THE BATTLE</h2>
+                <p class="hero-subtitle">Ultimate Free Fire Tournament 2026</p>
+                <p class="hero-description">
+                    Compete against India's best Free Fire players. Showcase your skills,
+                    dominate the battlefield, and claim your spot among legends!
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-trophy"></i>
+                        <h3>₹50,000</h3>
+                        <p>Prize Pool</p>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-users"></i>
+                        <h3 id="team-slots">48/64</h3>
+                        <p>Teams Registered</p>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-calendar"></i>
+                        <h3>Feb 20</h3>
+                        <p>Tournament Date</p>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="navigateToPage('register')">
+                    <span>Register Your Team</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
-            <p class="tournament-description">Join the ultimate Free Fire tournament! Compete against top players, showcase your skills, and win amazing prizes. This is your chance to become a legend!</p>
-            <h2>Welcome!</h2>
-            <p>Get ready for an epic battle in Free Fire. Register your team now!</p>
-        </section>
 
-        <section id="about" class="page">
-            <h2>About the Tournament</h2>
-            <p>This tournament brings together the best Free Fire players to compete for glory and exciting prizes. Form your squad, strategize, and conquer the battlefield!</p>
-            <h3>Prizes:</h3>
-            <ul>
-                <li>1st Place: Cash Prize</li>
-                <li>2nd Place: Cash Prize</li>
-                <li>3rd Place: Cash Prize</li>
-            </ul>
-        </section>
+            <!-- Tournament Image -->
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                <div class="image-glow"></div>
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=500&fit=crop"
+                     alt="Free Fire Tournament"
+                     loading="lazy">
+            </div>
+        </div>
 
-        <section id="rules" class="page">
-            <h2>Tournament Rules</h2>
-            <ul>
-                <li>This Tournament is a Paid Tournament.</li>
-                <li>Each team must consist of 4 players.</li>
-                <li>All players must be 16 years or older.</li>
-                <li>No emulators allowed.</li>
-                <li>Fair play is strictly enforced.</li>
-            </ul>
-        </section>
+        <!-- Prize Distribution Cards -->
+        <div class="prizes-section" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i> Prize Distribution
+            </h2>
+            <div class="prize-cards">
+                <div class="prize-card gold" data-aos="flip-left" data-aos-delay="100">
+                    <div class="rank-badge">🥇</div>
+                    <h3>1st Place</h3>
+                    <p class="prize-amount">₹25,000</p>
+                    <p class="prize-desc">Winner Winner Chicken Dinner</p>
+                </div>
+                <div class="prize-card silver" data-aos="flip-left" data-aos-delay="200">
+                    <div class="rank-badge">🥈</div>
+                    <h3>2nd Place</h3>
+                    <p class="prize-amount">₹15,000</p>
+                    <p class="prize-desc">Runner Up</p>
+                </div>
+                <div class="prize-card bronze" data-aos="flip-left" data-aos-delay="300">
+                    <div class="rank-badge">🥉</div>
+                    <h3>3rd Place</h3>
+                    <p class="prize-amount">₹10,000</p>
+                    <p class="prize-desc">Second Runner Up</p>
+                </div>
+            </div>
+        </div>
 
-        <section id="registration" class="page">
-            <h2>Team Registration</h2>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="teamName">Team Name:</label>
-                    <input type="text" id="teamName" name="teamName" required>
+        <!-- Tournament Features -->
+        <div class="features-section" data-aos="fade-up">
+            <h2 class="section-title">Why Join This Tournament?</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Registration</h3>
+                    <p>Quick and easy team registration process</p>
                 </div>
-                <br>
-                <div class="form-group">
-                    <label for="teamCaptain">Team Captain:</label>
-                    <input type="text" id="teamCaptain" name="teamCaptain" required>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Fair Play</h3>
+                    <p>Strict anti-cheat measures enforced</p>
                 </div>
-                <br>
-                <div class="form-group">
-                    <label for="mobileNumber">Mobile Number:</label>
-                    <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" required>
-                    <small>Format: 1234567890</small>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated Discord support channel</p>
                 </div>
-                <br>
-                <button type="submit">Submit Registration</button>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-medal"></i>
+                    <h3>Instant Prizes</h3>
+                    <p>Winners receive prizes immediately</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-section" data-aos="fade-up">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#" class="social-link discord" aria-label="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="social-link youtube" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-link instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES PAGE -->
+    <section id="rules" class="page" data-aos="fade-up">
+        <h2 class="page-title">
+            <i class="fas fa-gavel"></i> Tournament Rules
+        </h2>
+
+        <div class="rules-container">
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="100">
+                <div class="rule-icon">
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <h3>Entry Fee</h3>
+                <p>This is a paid tournament. Registration fee: ₹200 per team</p>
+            </div>
+
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="200">
+                <div class="rule-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Team Size</h3>
+                <p>Each team must consist of exactly 4 players (squad mode)</p>
+            </div>
+
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="300">
+                <div class="rule-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Age Requirement</h3>
+                <p>All players must be 16 years or older to participate</p>
+            </div>
+
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="400">
+                <div class="rule-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>No Emulators</h3>
+                <p>Mobile devices only - emulators are strictly prohibited</p>
+            </div>
+
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="500">
+                <div class="rule-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3>Fair Play</h3>
+                <p>Cheating, hacking, or teaming will result in instant disqualification</p>
+            </div>
+
+            <div class="rule-card" data-aos="fade-right" data-aos-delay="600">
+                <div class="rule-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h3>Discord Mandatory</h3>
+                <p>All teams must join our Discord server for match updates</p>
+            </div>
+        </div>
+
+        <div class="important-notice" data-aos="zoom-in">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>Important:</strong> Room ID and password will be shared on Discord 30 minutes before the match starts.</p>
+        </div>
+    </section>
+
+    <!-- REGISTRATION PAGE -->
+    <section id="register" class="page" data-aos="fade-up">
+        <h2 class="page-title">
+            <i class="fas fa-clipboard-list"></i> Team Registration
+        </h2>
+
+        <!-- Registration Form -->
+        <div class="form-container">
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group" data-aos="fade-right" data-aos-delay="100">
+                    <label for="teamName">
+                        <i class="fas fa-flag"></i> Team Name
+                    </label>
+                    <input
+                            type="text"
+                            id="teamName"
+                            name="teamName"
+                            placeholder="Enter your team name"
+                            required
+                            autocomplete="off"
+                    >
+                    <span class="error-message" id="teamName-error"></span>
+                </div>
+
+                <div class="form-group" data-aos="fade-right" data-aos-delay="200">
+                    <label for="teamCaptain">
+                        <i class="fas fa-user-shield"></i> Team Captain Name
+                    </label>
+                    <input
+                            type="text"
+                            id="teamCaptain"
+                            name="teamCaptain"
+                            placeholder="Enter captain's full name"
+                            required
+                            autocomplete="name"
+                    >
+                    <span class="error-message" id="teamCaptain-error"></span>
+                </div>
+
+                <div class="form-group" data-aos="fade-right" data-aos-delay="300">
+                    <label for="mobileNumber">
+                        <i class="fas fa-phone"></i> Mobile Number
+                    </label>
+                    <input
+                            type="tel"
+                            id="mobileNumber"
+                            name="mobileNumber"
+                            placeholder="Enter 10-digit mobile number"
+                            required
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            autocomplete="tel"
+                    >
+                    <span class="error-message" id="mobileNumber-error"></span>
+                    <small class="input-hint">Format: 9876543210 (10 digits)</small>
+                </div>
+
+                <button type="submit" class="submit-btn" data-aos="zoom-in" data-aos-delay="400">
+                    <span class="btn-text">Register Team</span>
+                    <span class="btn-loader">
+                            <i class="fas fa-spinner fa-spin"></i> Submitting...
+                        </span>
+                    <i class="fas fa-paper-plane btn-icon"></i>
+                </button>
             </form>
-        </section>
 
-        <section id="success-page" class="page" style="text-align: center;">
-            <h2>✅ Registration Successful!</h2>
-            <div class="discord-box">
-                <h3>Final Step: Join Our Discord</h3>
-                <p>You must join our Discord server to receive the room ID and password.</p>
-                <a href="https://discord.gg/9Wzn5vjJDZ" target="_blank" class="discord-button">Join Discord Server</a>
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
             </div>
-            <button onclick="window.location.reload()" class="back-btn">Back to Home</button>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Esports Tournament. All rights reserved.</p>
-    </footer>
+    <!-- SUCCESS PAGE -->
+    <section id="success-page" class="page" data-aos="fade-up">
+        <div class="success-container">
+            <!-- Success Animation -->
+            <div class="success-animation">
+                <div class="checkmark-circle">
+                    <div class="checkmark"></div>
+                </div>
+            </div>
 
-    <script src="script.js"></script>
+            <h2 class="success-title">🎉 Registration Successful!</h2>
+            <p class="success-message">
+                Your team has been successfully registered for the tournament.
+            </p>
+
+            <!-- Discord Join Section -->
+            <div class="discord-box">
+                <i class="fab fa-discord discord-icon-large"></i>
+                <h3>📢 Final Step: Join Our Discord</h3>
+                <p>
+                    You <strong>must</strong> join our Discord server to receive the
+                    <span class="highlight">Room ID</span> and <span class="highlight">Password</span>
+                    for the tournament.
+                </p>
+                <a href="https://discord.gg/TBXE3zeNAA"
+                   class="discord-button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fab fa-discord"></i>
+                    Join Discord Server
+                </a>
+                <p class="discord-note">
+                    <i class="fas fa-info-circle"></i>
+                    Match details will be shared 30 minutes before the tournament starts.
+                </p>
+            </div>
+
+            <button id="home-btn" class="home-btn" onclick="navigateToPage('tournament-info')">
+                <i class="fas fa-home"></i> Back to Home
+            </button>
+        </div>
+    </section>
+</main>
+
+<!-- Scroll to Top Button -->
+<button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Free Fire Esports Tournament. All rights reserved.</p>
+        <p class="footer-credits">
+            Made with <i class="fas fa-heart"></i> for gamers
+        </p>
+    </div>
+</footer>
+
+<!-- Toast Notification -->
+<div id="toast-notification" class="toast-notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message"></span>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
-
